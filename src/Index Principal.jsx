@@ -28,30 +28,24 @@ const IndexPrincipal = () => {
 
   return (
     <div>
+      <BrowserRouter basename="/cpem41-2024">
+        <Menu />
+        
+        <Routes>
+          <Route path="/" element={<Cpem41 />} />
+          <Route path="/inicio" element={<Inicio />} />
+          <Route path="/alumno" element={<Alumnos />} />
+          <Route path="/acuerdos-escolares" element={<AcuerdosEscolares />} />
+          <Route path="/docentes" element={<Docentes />} />
 
-            <BrowserRouter>
-            <Menu />
-            
-            <Routes>
+          <Route path="/Alumno/TD/TurnoDiurno" element={<TurnoDiurno />} />
+          <Route path="/Alumno/TV/TurnoVespertino" element={<TurnoVespertino />} />
 
-                <Route path="/" element={<Cpem41 />} />
-                <Route path="/inicio" element={<Inicio />} />
-                <Route path="/alumno" element={<Alumnos />} />
-                <Route path="/acuerdos-escolares" element={<AcuerdosEscolares />} />
-                <Route path="/docentes" element={<Docentes />} />
+          <Route path="/usuariosphp/Panel" element={<Panel/>}/>
+        </Routes>
 
-                <Route path="/Alumno/TD/TurnoDiurno" element={<TurnoDiurno />} />
-                <Route path="/Alumno/TV/TurnoVespertino" element={<TurnoVespertino />} />
-
-                <Route path="/usuariosphp/Panel" element={<Panel/>}/>
-
-            </Routes>
-
-            <Footerr />
-            
-
-            </BrowserRouter>
-    
+        <Footerr />
+      </BrowserRouter>
     </div>
   );
 };
