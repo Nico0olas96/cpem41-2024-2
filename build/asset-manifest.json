@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/cpem41-2024-2/static/css/main.e05a5b1e.css",
+    "main.js": "/cpem41-2024-2/static/js/main.f6f6b762.js",
+    "static/js/787.8f681b8d.chunk.js": "/cpem41-2024-2/static/js/787.8f681b8d.chunk.js",
+    "static/media/Escuela de frente.png": "/cpem41-2024-2/static/media/Escuela de frente.2d0c129d87f1d36ccbfa.png",
+    "static/media/logo Cpem41.jpg": "/cpem41-2024-2/static/media/logo Cpem41.56f801972d6bd67ba2cb.jpg",
+    "index.html": "/cpem41-2024-2/index.html",
+    "main.e05a5b1e.css.map": "/cpem41-2024-2/static/css/main.e05a5b1e.css.map",
+    "main.f6f6b762.js.map": "/cpem41-2024-2/static/js/main.f6f6b762.js.map",
+    "787.8f681b8d.chunk.js.map": "/cpem41-2024-2/static/js/787.8f681b8d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e05a5b1e.css",
+    "static/js/main.f6f6b762.js"
+  ]
+}
