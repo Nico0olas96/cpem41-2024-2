@@ -2,7 +2,7 @@
   "name": "cpem41.edu.ar-pp",
   "version": "0.1.0",
   "private": true,
-  "homepage": "./",
+  "homepage": "http://Nico0olas96.github.io/cpem41-2024",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -19,7 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build"
+    "predeploy": "npm run build",
+    "deploy":"gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
