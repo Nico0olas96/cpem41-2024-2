@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
-const baseURL = 'http://localhost:8000/mesasexamenes'
+const baseURL = 'http://localhost/cpem41/backend.php/mesastd.php'; 
 
 const Mesas = () => {
 
@@ -13,10 +13,12 @@ const Mesas = () => {
 
     const getMesas = async () => {
         try {
-            const response = await axios.get (baseURL)
-            setMesas(response.data)
-        }catch (error) {
-            console.error('error al obetener mesas de examenes')
+            const response = await axios.get(baseURL); 
+            console.log(response.data); // Imprime los datos recibidos en la consola
+
+            setMesas(response.data.slice()); 
+        } catch (error) {
+            console.error('Error al obtener la información:', error);
         }
     }
 
@@ -33,34 +35,33 @@ const Mesas = () => {
                     <tr>
                         <th>ASIGNATURA</th>
                         <th>CURSO</th>
-                        <th>JULIO 2023</th>
-                        <th>DICIEMBRE 2023</th>
-                        <th>FEBRERO 2024</th>
+                        <th>JULIO 2024</th>
+                        <th>DICIEMBRE 2024</th>
+                        <th>FEBRERO 2025</th>
                         <th>HORARIOS</th>
                         <th>INTEGRANTES TRIBUNAL</th>
                     </tr>
                 </thead>
                 <tbody>
-
-                    {Array.isArray(mesas) ? (
-                        mesas.map ((item) => (
+                    {mesas.length > 0 ? (
+                        mesas.map((item) => (
                             <tr key={item.id}>
-                                <td>{item.asignatura}</td>
-                                <td>{item.curso}</td>
-                                <td>{item.julio2023}</td>
-                                <td>{item.diciembre2023}</td>
-                                <td>{item.febrero2024}</td>
-                                <td>{item.horarios}</td>
-                                <td>{item.integrantestribunal}</td>
+                                <td>{item.ASIGNATURA}</td>
+                                <td>{item.CURSO}</td>
+                                <td>{item.JULIO2023}</td>
+                                <td>{item.DICIEMBRE2023}</td>
+                                <td>{item.FEBRERO2024}</td>
+                                <td>{item.HORARIOS}</td>
+                                <td>{item.INTEGRANTESTRIBUNAL}</td>
                             </tr>
                         ))
                     ) : (
                         <tr>
-                            <td colSpan="6">Cargando datos...</td>
+                            <td colSpan="7">Cargando datos...</td>
                         </tr>
                     )}
-
                 </tbody>
+
                 </table>
 
             </div>

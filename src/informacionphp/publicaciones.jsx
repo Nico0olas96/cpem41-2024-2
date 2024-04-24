@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Listapublicaciones from './listapublicaciones';
 
-const baseURL = 'http://localhost/cpem41/backend.php/informacion.php';
+const baseURL = 'http://localhost/cpem41/backend.php/admpost.php';
 
 const Publicaciones = () => {
     const [informacion, setInformacion] = useState([]);

@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 
-const baseURL = 'http://localhost:8000/mesasexamenestv'
+const baseURL = 'http://localhost/cpem41/backend.php/mesastv.php'; 
 
 const Mesas = () => {
 	const [mesas, setMesas] = useState ([])
@@ -57,14 +57,14 @@ const Mesas = () => {
 
                     {Array.isArray(mesas) ? (
                         mesas.map ((item) => (
-                            <tr key={item.id}>
-                                <td>{item.asignatura}</td>
-                                <td>{item.curso}</td>
-                                <td>{item.julio2023}</td>
-                                <td>{item.diciembre2023}</td>
-                                <td>{item.febrero2024}</td>
-                                <td>{item.horarios}</td>
-                                <td>{item.integrantestribunal}</td>
+                            <tr key={item.Id}>
+                                <td>{item.ASIGNATURA}</td>
+                                <td>{item.CURSO}</td>
+                                <td>{item.JULIO2023}</td>
+                                <td>{item.DICIEMBRE2023}</td>
+                                <td>{item.FEBRERO2024}</td>
+                                <td>{item.HORARIOS}</td>
+                                <td>{item.INTEGRANTESTRIBUNAL}</td>
                             </tr>
                         ))
                     ) : (

@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 
-const baseURL = 'http://localhost:8000/horariosconsultatv'
+const baseURL = 'http://localhost/cpem41/backend.php/horariostv.php'; 
 
 const Consulta = () => {
 

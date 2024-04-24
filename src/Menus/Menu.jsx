@@ -78,11 +78,6 @@ class Menu extends Component {
                                     Docentes
                                 </Link>
                             </li>
-                            <li>
-                                <Link to="/usuariosphp/Panel" onClick={this.closeMenu}>
-                                    Panel
-                                </Link>
-                            </li>
                         </ul>
                     </nav>
                 </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import Admhorariostd from './Admhorariostd';
-import Admhorariostv from './Admhorariostv';
+import Admmesas from './Admmesas';
+import Admmesastv from './Admmesastv';
 
 
 const Panel = () => {
@@ -22,17 +22,17 @@ const Panel = () => {
         <div className='seccion'>
 
                 <div className='btn' onClick={cargarSeccionPublicaciones}>
-                    HORARIOS TD
+                    MESAS TD
                 </div>
                 
                 <div className='btn' onClick={cargarSeccionHorarios}>
-                    HORARIOS TV
+                    MESAS TV
                 </div>
                          
 
-            {seccion === 'publicaciones' && <Admhorariostd/>}
+            {seccion === 'publicaciones' && <Admmesas/>}
 
-            {seccion === 'horarios' && <Admhorariostv/>}
+            {seccion === 'horarios' && <Admmesastv/>}
 
 
 

@@ -4,6 +4,10 @@ import axios from 'axios';
 
 
 const baseURL = 'http://localhost/cpem41/backend.php/admpost.php'; 
+const baseBorrar = 'http://localhost/cpem41/backend.php/borrar.php'
+const baseModificar = 'http://localhost/cpem41/backend.php/modificarpost.php'
+
+const backendDomain = "http://localhost/cpem41/backend.php/";
 
 const Admpost = () => {
 
@@ -38,7 +42,7 @@ const Admpost = () => {
 
 
     
-    const eliminarRegistro = async (key) => {   
+    const eliminarRegistro = async (id) => {   
         const confirmacion = await Swal.fire({
             title: '¿Estás seguro?',
             text: '¿Eliminar el registro de forma permanente?',
@@ -49,8 +53,9 @@ const Admpost = () => {
         })
 
         if(confirmacion.isConfirmed){
+ 
             try {
-            await axios.delete(`${baseURL}/${key}`)
+            await axios.delete(`${baseBorrar}?id=${id}`)
             Swal.fire({
                 title: '¡Éxito!',
                 text: 'El registro se ha eliminado correctamente.',
@@ -76,29 +81,42 @@ const Admpost = () => {
     }
 
     const guardarModificacion = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
+
         try {
-            await axios.put(`${baseURL}/${registro.id}`, registro)
-            getInformacion()
-            setSeccion('')
-            setRegistro(null)
+            const response = await axios.put(`${baseModificar}?id=${registro.Id}`, {
+                id: registro.Id,
+                titulo: registro.titulo,
+                descripcion: registro.descripcion,
+                link: registro.link,
+                finalI: registro.finalI
+            }, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            console.log(response.data); 
+    
+            getInformacion();
+            setSeccion('');
+            setRegistro(null);
+            
             Swal.fire({
                 title: '¡Éxito!',
                 text: 'Los datos se han modificado correctamente.',
                 icon: 'success',
-              })
-            
+            });
         } catch (error) {
-          console.error('Error al guardar la modificación:', error)
-          Swal.fire({
-            title: 'Error',
-            text: 'Hubo un problema al intentar modificar los datos.',
-            icon: 'error',
-          })
+            console.error('Error al guardar la modificación:', error);
+            Swal.fire({
+                title: 'Error',
+                text: 'Hubo un problema al intentar modificar los datos.',
+                icon: 'error',
+            });
         }
-        
-
     };
+    
+    
 
     const mostrarImg = (img) =>{
         setMostrarImg (img)
@@ -128,22 +146,22 @@ const Admpost = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {informacion && informacion.length > 0 && informacion.map((item) => (
-                                <tr key={item.id}>
+                            {informacion && informacion.length > 0 && informacion.map((item, index) => (
+                                <tr key={item.id || index}>
                                     <td>{item.titulo}</td>
                                     <td>{item.descripcion}</td>
                                     <td>{item.link}</td>
-                                    <td>
-                                        {item.img && item.img.data && item.img.data.length > 0 && (
+                                    <td>    
+                                        {(item.img !== undefined && item.img !== '\/') && (
                                             <button onClick={() => mostrarImg(item.img)}>Ver Imagen</button>
                                         )}
                                     </td>
                                     <td>{item.finalI}</td>
                                     <td>
-                                        {!item.img || !item.img.data || item.img.data.length === 0 && (
+                                        {(!item.img || item.img === '\/') && (
                                             <button onClick={() => modificaciones(item)}>Modificar</button>
                                         )}
-                                        <button onClick={() => eliminarRegistro(item.id)}>Borrar</button>
+                                        <button onClick={() => eliminarRegistro(item.Id)}>Borrar</button> 
                                     </td>
                                 </tr>
                             ))}
@@ -223,8 +241,10 @@ const Admpost = () => {
             {seccion === 'mostrarImg' && (
                 <div className='frame'> 
                     
-                    <img src={`data:image/png;base64,${guardarImg}`} alt="Imagen" />
-                    
+                    {guardarImg && guardarImg !== '\/' && (
+                        <img src={backendDomain + guardarImg} alt="Imagen" width="70%" />
+                    )}
+
                     <div >
                         <button className='volverModificaciones' onClick={ () => {
                             setSeccion('');
